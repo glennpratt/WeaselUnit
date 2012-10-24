@@ -1,11 +1,11 @@
 <?php
-namespace SeleniumMinkMigrate;
+namespace WeaselUnit;
 
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
 use Behat\Mink\Driver\SeleniumDriver;
 
-use SeleniumMinkMigrate\Selenium\Client as SeleniumClient;
+use WeaselUnit\Selenium\Client as SeleniumClient;
 
 use PHPUnit_Extensions_SeleniumTestCase;
 use ReflectionClass;

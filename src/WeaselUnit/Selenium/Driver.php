@@ -1,5 +1,5 @@
 <?php
-namespace SeleniumMinkMigrate\Selenium;
+namespace WeaselUnit\Selenium;
 
 class Driver extends \Selenium\Driver
 {

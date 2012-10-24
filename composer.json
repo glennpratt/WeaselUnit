@@ -1,5 +1,5 @@
 {
-    "name": "glennpratt/selenium-mink-migrate",
+    "name": "glennpratt/weasel-unit",
     "description": "Helper to allow using Mink Selenium and PHPUnit_Selenium during migration.",
     "require": {
         "phpunit/phpunit-selenium": "*",
@@ -14,8 +14,8 @@
     ],
     "autoload": {
         "psr-0": {
-            "SeleniumMinkMigrate\\Tests": "tests/",
-            "SeleniumMinkMigrate": "src/"
+            "WeaselUnit\\Tests": "tests/",
+            "WeaselUnit": "src/"
         }
     }
 }

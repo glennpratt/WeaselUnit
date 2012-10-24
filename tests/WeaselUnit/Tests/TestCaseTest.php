@@ -1,7 +1,7 @@
 <?php
-namespace SeleniumMinkMigrate\Tests;
+namespace WeaselUnit\Tests;
 
-use SeleniumMinkMigrate\TestCase;
+use WeaselUnit\TestCase;
 
 class TestCaseTest extends TestCase
 {

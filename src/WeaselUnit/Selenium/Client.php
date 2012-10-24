@@ -1,5 +1,5 @@
 <?php
-namespace SeleniumMinkMigrate\Selenium;
+namespace WeaselUnit\Selenium;
 
 class Client extends \Selenium\Client
 {
