@@ -1,0 +1,21 @@
+{
+    "name": "glennpratt/selenium-mink-migrate",
+    "description": "Helper to allow using Mink Selenium and PHPUnit_Selenium during migration.",
+    "require": {
+        "phpunit/phpunit-selenium": "*",
+        "behat/mink": "*",
+        "behat/mink-selenium-driver": "*"
+    },
+    "authors": [
+        {
+            "name": "Glenn Pratt",
+            "email": "glennpratt@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "SeleniumMinkMigrate\\Tests": "tests/",
+            "SeleniumMinkMigrate": "src/"
+        }
+    }
+}
