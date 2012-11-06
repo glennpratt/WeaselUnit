@@ -5,7 +5,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
   - DISPLAY=:99 java -jar selenium-server-standalone-2.25.0.jar &> /dev/null &
-  - sleep 10
+  - while ! nc -z localhost 4444; do sleep 1; done; echo 'Selenium Server is up!'
 script:
   - vendor/bin/phpunit tests/
 
