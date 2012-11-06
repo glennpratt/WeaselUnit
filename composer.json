@@ -1,6 +1,14 @@
 {
     "name": "glennpratt/weasel-unit",
+    "type": "library",
     "description": "Helper to allow using Mink Selenium and PHPUnit_Selenium during migration.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Glenn Pratt",
+            "email": "glennpratt@gmail.com"
+        }
+    ],
     "require": {
         "phpunit/phpunit-selenium": "*",
         "behat/mink": "*",
@@ -9,7 +17,8 @@
     "require-dev": {
         "behat/mink-goutte-driver": "*",
         "bolt80/stupidhttp": "*",
-        "fabpot/goutte": "@dev"
+        "fabpot/goutte": "@dev",
+        "fabpot/php-cs-fixer": "@dev"
     },
     "authors": [
         {
