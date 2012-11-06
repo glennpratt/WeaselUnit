@@ -6,5 +6,5 @@ before_install:
   - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
   - DISPLAY=:99 java -jar selenium-server-standalone-2.25.0.jar &> /dev/null &
 script:
-  - phpunit tests/
+  - vendor/bin/phpunit tests/
 
