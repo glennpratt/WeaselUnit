@@ -5,7 +5,7 @@ use WeaselUnit\MinkTestCase;
 
 class MinkTestCaseTest extends MinkTestCase
 {
-    public function testOpen() {
+    public function testMinkOnly() {
         $session = $this->getMink()->getSession('selenium');
         $assert = $this->getMink()->assertSession('selenium');
 
