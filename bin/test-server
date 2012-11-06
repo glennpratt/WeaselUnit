@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+include_once(__DIR__ . '/../vendor/autoload.php');
+
+$webroot = __DIR__ . '/../tests/WeaselUnit/Tests/Fixtures';
+$port = 8675;
+
+$server = new StupidHttp_WebServer($webroot, $port);
+$server->run();

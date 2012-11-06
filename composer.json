@@ -6,6 +6,11 @@
         "behat/mink": "*",
         "behat/mink-selenium-driver": "*"
     },
+    "require-dev": {
+        "behat/mink-goutte-driver": "*",
+        "bolt80/stupidhttp": "*",
+        "fabpot/goutte": "@dev"
+    },
     "authors": [
         {
             "name": "Glenn Pratt",
