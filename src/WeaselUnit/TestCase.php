@@ -25,11 +25,13 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      */
     protected $mink;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->fromMink ? $this->fromMink() : $this->fromPHPUnit();
     }
 
-    protected function fromMink() {
+    protected function fromMink()
+    {
         $this->seleniumClient = new SeleniumClient('localhost', 4444);
         $this->seleniumDriver = new SeleniumDriver('*firefox', 'http://www.google.com', $this->seleniumClient);
         $this->mink = new Mink(array(
@@ -41,7 +43,8 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
         self::setPHPUnitSessionId($this->drivers[0], $sessionId);
     }
 
-    protected function fromPHPUnit() {
+    protected function fromPHPUnit()
+    {
         $this->prepareTestSession();
         $sessionId = self::getPHPUnitSessionId($this->drivers[0]);
         $this->seleniumClient = new SeleniumClient('localhost', 4444);
@@ -55,7 +58,8 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
     /**
      * @return Mink
      */
-    public function getMink() {
+    public function getMink()
+    {
         return $this->mink;
     }
 
@@ -63,7 +67,8 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      *
      * @return string
      */
-    public static function getSeleniumDriverSessionId(SeleniumDriver $driver) {
+    public static function getSeleniumDriverSessionId(SeleniumDriver $driver)
+    {
         $class = new ReflectionClass(get_class($driver));
         $property = $class->getProperty("browser");
         $property->setAccessible(true);
@@ -84,7 +89,8 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      *
      * @return string
      */
-    public static function getPHPUnitSessionId(PHPUnit_Extensions_SeleniumTestCase_Driver $driver) {
+    public static function getPHPUnitSessionId(PHPUnit_Extensions_SeleniumTestCase_Driver $driver)
+    {
         $class = new ReflectionClass(get_class($driver));
         $property = $class->getProperty("sessionId");
         $property->setAccessible(true);
@@ -96,7 +102,8 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      *
      * @param string $sessionId
      */
-    public static function setPHPUnitSessionId(PHPUnit_Extensions_SeleniumTestCase_Driver $driver, $sessionId) {
+    public static function setPHPUnitSessionId(PHPUnit_Extensions_SeleniumTestCase_Driver $driver, $sessionId)
+    {
         $class = new ReflectionClass(get_class($driver));
         $property = $class->getProperty("sessionId");
         $property->setAccessible(true);

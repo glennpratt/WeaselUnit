@@ -4,7 +4,8 @@ namespace WeaselUnit\Selenium;
 class Driver extends \Selenium\Driver
 {
 
-    public function setSessionId($sessionId) {
+    public function setSessionId($sessionId)
+    {
         $this->sessionId = $sessionId;
     }
 

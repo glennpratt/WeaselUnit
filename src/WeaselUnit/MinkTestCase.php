@@ -17,7 +17,8 @@ abstract class MinkTestCase extends PHPUnit_Framework_TestCase
     /**
      * Prepare Mink for use.
      */
-    protected function prepareMinkSession() {
+    protected function prepareMinkSession()
+    {
         $driver = new GoutteDriver();
         $this->mink = new Mink(array(
             'selenium' => new Session($driver),
@@ -28,7 +29,8 @@ abstract class MinkTestCase extends PHPUnit_Framework_TestCase
      * Get the Mink session.
      * @return Mink
      */
-    protected function getMink() {
+    protected function getMink()
+    {
         if (empty($this->mink)) {
             $this->prepareMinkSession();
         }
