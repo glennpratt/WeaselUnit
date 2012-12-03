@@ -5,7 +5,8 @@ use Behat\Mink\Mink;
 use Behat\Mink\Session;
 use Behat\Mink\Driver\SeleniumDriver;
 
-use WeaselUnit\Selenium\Client as SeleniumClient;
+//use WeaselUnit\Selenium\Client as SeleniumClient;
+use Selenium\Client;
 
 use PHPUnit_Extensions_SeleniumTestCase;
 use PHPUnit_Extensions_SeleniumTestCase_Driver;
@@ -32,7 +33,7 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
 
     protected function fromMink()
     {
-        $this->seleniumClient = new SeleniumClient('localhost', 4444);
+        $this->seleniumClient = new Client('localhost', 4444);
         $this->seleniumDriver = new SeleniumDriver('*firefox', 'http://www.google.com', $this->seleniumClient);
         $this->mink = new Mink(array(
             'selenium' => new Session($this->seleniumDriver),
@@ -47,9 +48,9 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
     {
         $this->prepareTestSession();
         $sessionId = self::getPHPUnitSessionId($this->drivers[0]);
-        $this->seleniumClient = new SeleniumClient('localhost', 4444);
-        $this->seleniumClient->sessionId = $sessionId;
+        $this->seleniumClient = new Client('localhost', 4444);
         $this->seleniumDriver = new SeleniumDriver('*firefox', 'http://www.google.com', $this->seleniumClient);
+        self::setSeleniumDriverSessionId($this->seleniumDriver, $sessionId);
         $this->mink = new Mink(array(
             'selenium' => new Session($this->seleniumDriver),
         ));
@@ -83,6 +84,35 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
         $property = $class->getProperty("sessionId");
         $property->setAccessible(true);
         return $property->getValue($driver);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public static function setSeleniumDriverSessionId(SeleniumDriver $driver, $sessionId)
+    {
+        $driverClass = new ReflectionClass(get_class($driver));
+        $property = $driverClass->getProperty("browser");
+        $property->setAccessible(true);
+        $browser = $property->getValue($driver);
+
+        $class = new ReflectionClass(get_class($browser));
+        $property = $class->getProperty("driver");
+        $property->setAccessible(true);
+        $seleniumDriver = $property->getValue($browser);
+
+        $seleniumDriverClass = new ReflectionClass(get_class($seleniumDriver));
+        $property = $seleniumDriverClass->getProperty("sessionId");
+        $property->setAccessible(true);
+        $ret = $property->setValue($seleniumDriver, $sessionId);
+
+        // Mark the driver as started now that it has a sessionId.
+        $property = $driverClass->getProperty("started");
+        $property->setAccessible(true);
+        $property->setValue($driver, true);
+
+        return $ret;
     }
 
     /**
